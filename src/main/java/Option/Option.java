@@ -1,6 +1,7 @@
 package Option;
 
 import java.util.ArrayList;
+
 public class Option {
     private int id;
     private String message;
