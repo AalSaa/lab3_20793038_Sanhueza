@@ -57,4 +57,29 @@ public class CBSystem {
         return chatbotList;
     }
 
+    public void systemAddChatbot(Chatbot cb) {
+        int chatbotID = cb.getId();
+
+        if(!idExists(chatbotID)) {
+            this.chatbotList.add(cb);
+            System.out.println("Se ha agregado el chatbot al sistema.");
+        }
+        else {
+            System.out.println("Ya existe un chatbot con id " + chatbotID + " en el sistema.");
+        }
+    }
+
+    public boolean idExists(int id) {
+        Chatbot selectedCB;
+        int selectedID;
+        ArrayList<Chatbot> chatbotList = this.chatbotList;
+        for (int i = 0; i < chatbotList.size(); i++) {
+            selectedCB = chatbotList.get(i);
+            selectedID = selectedCB.getId();
+            if (selectedID == id) {
+                return  true;
+            }
+        }
+        return false;
+    }
 }
