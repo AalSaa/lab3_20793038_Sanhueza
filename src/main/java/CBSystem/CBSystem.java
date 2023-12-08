@@ -69,6 +69,21 @@ public class CBSystem {
         }
     }
 
+    public void systemAddUser (User user) {
+        if (!userExists(user.getUsername())) {
+            this.userList.add(user);
+            if (user.getRole().equals("admin")) {
+                System.out.println("Se ha agregado a " + user.getUsername() + " como admin del sistema.");
+            }
+            else {
+                System.out.println("Se ha agregado a " + user.getUsername() + " como usuario del sistema.");
+            }
+        }
+        else {
+            System.out.println("El usuario " + user.getUsername() + " ya existe en el sistema.");
+        }
+    }
+
     public boolean idExists(int id) {
         Chatbot selectedCB;
         int selectedID;
@@ -78,6 +93,20 @@ public class CBSystem {
             selectedID = selectedCB.getId();
             if (selectedID == id) {
                 return  true;
+            }
+        }
+        return false;
+    }
+
+    public boolean userExists (String username) {
+        User selectedUser;
+        String selectedUsername;
+        ArrayList<User> userList = this.userList;
+        for (int i = 0; i < userList.size(); i++) {
+            selectedUser = userList.get(i);
+            selectedUsername = selectedUser.getUsername();
+            if(username.equals(selectedUsername)){
+                return true;
             }
         }
         return false;
