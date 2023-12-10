@@ -1,12 +1,12 @@
-package ChatHistory;
+package chatHistory_20793038_SanhuezaVega;
 
 import java.util.ArrayList;
 
-public class ChatHistory {
+public class chatHistory_20793038_SanhuezaVega {
     String username;
     ArrayList<String> RecordList;
 
-    public ChatHistory(String username, ArrayList<String> recordList) {
+    public chatHistory_20793038_SanhuezaVega(String username, ArrayList<String> recordList) {
         this.username = username;
         RecordList = recordList;
     }
