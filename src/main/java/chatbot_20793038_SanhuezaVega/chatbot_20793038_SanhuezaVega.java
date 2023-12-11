@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import Tools.toolsInterface_20793038_SanhuezaVega;
 import flow_20793038_SanhuezaVega.flow_20793038_SanhuezaVega;
 
-public class chatbot_20793038_SanhuezaVega implements chatbotInterface_20793038_SanhuezaVega,
-                                                      toolsInterface_20793038_SanhuezaVega<flow_20793038_SanhuezaVega>{
+public class chatbot_20793038_SanhuezaVega implements chatbotInterface_20793038_SanhuezaVega
+                                                    , toolsInterface_20793038_SanhuezaVega<flow_20793038_SanhuezaVega>{
     int id;
     String name;
     String welcomeMessage;
@@ -91,5 +91,38 @@ public class chatbot_20793038_SanhuezaVega implements chatbotInterface_20793038_
             }
         }
         return false;
+    }
+
+    public flow_20793038_SanhuezaVega getFlowByID(int id){
+        flow_20793038_SanhuezaVega selectedFlow;
+        int selectedFlowID;
+        ArrayList<flow_20793038_SanhuezaVega> flowList = this.flowList;
+
+        for(int i = 0; i < flowList.size(); i++){
+            selectedFlow = flowList.get(i);
+            selectedFlowID = selectedFlow.getId();
+
+            if(id == selectedFlowID){
+                return selectedFlow;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void showElements(){
+        ArrayList<flow_20793038_SanhuezaVega> flowList = this.flowList;
+
+        System.out.println("#### Flujos en el sistema ####");
+        for(int i = 0; i < flowList.size(); i++){
+            System.out.println("Flujo " + (i + 1) + ":\n" + flowList.get(i).toString());
+        }
+    }
+
+    public String toString() {
+        return  "id: " + id +
+                ", name: '" + name + '\'' +
+                ", welcomeMessage: '" + welcomeMessage + '\'' +
+                ", startFCodelink: " + startFCodelink;
     }
 }

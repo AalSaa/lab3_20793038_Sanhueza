@@ -41,4 +41,14 @@ public class option_20793038_SanhuezaVega implements optionInterface_20793038_Sa
     public ArrayList<String> getKeyword() {
         return keyword;
     }
+
+    public String toString() {
+        return "option_20793038_SanhuezaVega{" +
+                "id=" + id +
+                ", message='" + message + '\'' +
+                ", cbCodelink=" + cbCodelink +
+                ", fCodelink=" + fCodelink +
+                ", keyword=" + keyword +
+                '}';
+    }
 }

@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import Tools.toolsInterface_20793038_SanhuezaVega;
 import option_20793038_SanhuezaVega.option_20793038_SanhuezaVega;
 
-public class flow_20793038_SanhuezaVega implements flowInterface_20793038_SanhuezaVega,
-                                                   toolsInterface_20793038_SanhuezaVega<option_20793038_SanhuezaVega>{
+public class flow_20793038_SanhuezaVega implements flowInterface_20793038_SanhuezaVega
+                                                 , toolsInterface_20793038_SanhuezaVega<option_20793038_SanhuezaVega>{
     int id;
     String nameMSG;
     ArrayList<option_20793038_SanhuezaVega> optionList;
@@ -75,6 +75,19 @@ public class flow_20793038_SanhuezaVega implements flowInterface_20793038_Sanhue
             }
         }
         return false;
+    }
+
+    @Override
+    public void showElements(){
+        ArrayList<option_20793038_SanhuezaVega> optionList = this.optionList;
+        for(int i = 0; i < optionList.size(); i++){
+            System.out.println(optionList.get(i).getMessage());
+        }
+    }
+
+    public String toString() {
+        return  "id: " + id +
+                ", nameMSG: '" + nameMSG + '\'';
     }
 }
 

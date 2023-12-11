@@ -2,7 +2,7 @@ package user_20793038_SanhuezaVega;
 
 import java.util.ArrayList;
 
-public class user_20793038_SanhuezaVega implements  userInterface_20793038_SanhuezaVega{
+public class user_20793038_SanhuezaVega implements userInterface_20793038_SanhuezaVega{
     String username;
     int isLogged;
     int cbCodelink;
@@ -50,5 +50,24 @@ public class user_20793038_SanhuezaVega implements  userInterface_20793038_Sanhu
             }
         }
         return false;
+    }
+
+    @Override
+    public void login(){
+        this.isLogged = 1;
+    }
+
+    @Override
+    public void logout(){
+        this.isLogged = 0;
+    }
+
+    public String toString() {
+        return "user_20793038_SanhuezaVega{" +
+                "username='" + username + '\'' +
+                ", isLogged=" + isLogged +
+                ", cbCodelink=" + cbCodelink +
+                ", fCodelink=" + fCodelink +
+                '}';
     }
 }

@@ -8,4 +8,7 @@ public interface userInterface_20793038_SanhuezaVega {
     int getCbCodelink();
     int getfCodelink();
     boolean userExistsInList(ArrayList<user_20793038_SanhuezaVega> userList);
+
+    void login();
+    void logout();
 }
