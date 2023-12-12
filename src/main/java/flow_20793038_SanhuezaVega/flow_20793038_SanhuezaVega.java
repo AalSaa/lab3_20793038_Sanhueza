@@ -7,10 +7,28 @@ import option_20793038_SanhuezaVega.option_20793038_SanhuezaVega;
 
 public class flow_20793038_SanhuezaVega implements flowInterface_20793038_SanhuezaVega
                                                  , toolsInterface_20793038_SanhuezaVega<option_20793038_SanhuezaVega>{
+    /**
+     * El id del flujo.
+     */
     int id;
+
+    /**
+     *  El nombre del mensaje del flujo.
+     */
     String nameMSG;
+
+    /**
+     * La lista de opciones del flujo.
+     */
     ArrayList<option_20793038_SanhuezaVega> optionList;
 
+    /**
+     * Constructor de flow
+     *
+     * @param id  id del flujo
+     * @param nameMSG  nombre del mensaje del flujo
+     * @param optionList  lista de opciones del flujo
+     */
     public flow_20793038_SanhuezaVega(int id, String nameMSG, ArrayList<option_20793038_SanhuezaVega> optionList) {
         this.id = id;
         this.nameMSG = nameMSG;
@@ -24,13 +42,9 @@ public class flow_20793038_SanhuezaVega implements flowInterface_20793038_Sanhue
     }
 
     @Override
-    public String getNameMSG() {
-        return nameMSG;
-    }
-
-    @Override
-    public ArrayList<option_20793038_SanhuezaVega> getOptionList() {
-        return optionList;
+    public String toString() {
+        return  "id: " + id +
+                ", nameMSG: '" + nameMSG + '\'';
     }
 
     @Override
@@ -52,7 +66,7 @@ public class flow_20793038_SanhuezaVega implements flowInterface_20793038_Sanhue
 
             if(!idExists(selectedOptionID)) {
                 this.optionList.add(selectedOption);
-                // Aqui hay que poner un mensaje que se agrego algo xd
+                System.out.println("Se ha agregado la opcion al flujo.");
             }
             else {
                 System.out.println("La opcion con el id " + selectedOptionID + " ya existe.");
@@ -80,14 +94,11 @@ public class flow_20793038_SanhuezaVega implements flowInterface_20793038_Sanhue
     @Override
     public void showElements(){
         ArrayList<option_20793038_SanhuezaVega> optionList = this.optionList;
-        for(int i = 0; i < optionList.size(); i++){
-            System.out.println(optionList.get(i).getMessage());
-        }
-    }
 
-    public String toString() {
-        return  "id: " + id +
-                ", nameMSG: '" + nameMSG + '\'';
+        System.out.println("#### Opciones en el flujo ####");
+        for(int i = 0; i < optionList.size(); i++){
+            System.out.println("Opcion " + (i + 1) + ":\n" + optionList.get(i).toString());
+        }
     }
 }
 

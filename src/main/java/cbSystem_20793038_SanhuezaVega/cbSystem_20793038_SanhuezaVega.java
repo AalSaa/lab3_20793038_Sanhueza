@@ -7,16 +7,52 @@ import Tools.toolsInterface_20793038_SanhuezaVega;
 import chatbot_20793038_SanhuezaVega.chatbot_20793038_SanhuezaVega;
 import user_20793038_SanhuezaVega.user_20793038_SanhuezaVega;
 import chatHistory_20793038_SanhuezaVega.chatHistory_20793038_SanhuezaVega;
+import storage_20793038_SanhuezaVega.storage_20793038_SanhuezaVega;
 
 public class cbSystem_20793038_SanhuezaVega implements cbSystemInterface_20793038_SanhuezaVega
                                                      , toolsInterface_20793038_SanhuezaVega<chatbot_20793038_SanhuezaVega>{
+    /**
+     *  La fecha de creacion del sistema,
+     */
     Date date;
+
+    /**
+     * El nombre del sistema.
+     */
     String name;
+
+    /**
+     * La lista de usuarios del sistema.
+     */
     ArrayList<user_20793038_SanhuezaVega> userList;
+
+    /**
+     * La lista de registros del sistema.
+     */
     ArrayList<chatHistory_20793038_SanhuezaVega> chatHistory;
+
+    /**
+     * El codigo del chatbot inicial del sistema.
+     */
     int startCBCodelink;
+
+    /**
+     * La lista de chatbots del sistema.
+     */
     ArrayList<chatbot_20793038_SanhuezaVega> chatbotList;
 
+    /**
+     * El almacenamiento de objetos del sistema.
+     */
+    storage_20793038_SanhuezaVega systemStorage;
+
+    /**
+     * Constructor del chatbotSystem
+     *
+     * @param name  nombre del sistema
+     * @param startCBCodelink  codigo del chatbot inicial del sistema
+     * @param chatbotList lista de chatbots del sistema
+     */
     public cbSystem_20793038_SanhuezaVega(String name, int startCBCodelink,
                                           ArrayList<chatbot_20793038_SanhuezaVega> chatbotList) {
         this.date = new Date();
@@ -25,32 +61,17 @@ public class cbSystem_20793038_SanhuezaVega implements cbSystemInterface_2079303
         this.chatHistory = new ArrayList<>();
         this.startCBCodelink = startCBCodelink;
         this.chatbotList = new ArrayList<>();
+        this.systemStorage = new storage_20793038_SanhuezaVega();
 
         filterElementsInList(chatbotList);
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ArrayList<user_20793038_SanhuezaVega> getUserList() {
-        return userList;
-    }
-
-    public ArrayList<chatHistory_20793038_SanhuezaVega> getChatHistory() {
-        return chatHistory;
-    }
-
-    public int getStartCBCodelink() {
-        return startCBCodelink;
-    }
-
     public ArrayList<chatbot_20793038_SanhuezaVega> getChatbotList() {
         return chatbotList;
+    }
+
+    public storage_20793038_SanhuezaVega getSystemStorage() {
+        return systemStorage;
     }
 
     public user_20793038_SanhuezaVega getLoggedUser(){
@@ -83,6 +104,22 @@ public class cbSystem_20793038_SanhuezaVega implements cbSystemInterface_2079303
             }
         }
         return false;
+    }
+
+    public chatbot_20793038_SanhuezaVega getChatbotByID(int id){
+        chatbot_20793038_SanhuezaVega selectedChatbot;
+        int selectedChatbotID;
+        ArrayList<chatbot_20793038_SanhuezaVega> chatbotList = this.chatbotList;
+
+        for(int i = 0; i < chatbotList.size(); i++){
+            selectedChatbot = chatbotList.get(i);
+            selectedChatbotID = selectedChatbot.getId();
+
+            if(id == selectedChatbotID){
+                return selectedChatbot;
+            }
+        }
+        return null;
     }
 
     @Override
@@ -168,7 +205,7 @@ public class cbSystem_20793038_SanhuezaVega implements cbSystemInterface_2079303
 
             if(!idExists(selectedChatbotID)){
                 this.chatbotList.add(selectedChatbot);
-                // Aqui hay que poner un mensaje que se agrego algo xd
+                System.out.println("Se ha agregado el chatbot al sistema.");
             }
             else{
                 System.out.println("El chatbot con el id " + selectedChatbotID + " ya existe.");
@@ -191,22 +228,6 @@ public class cbSystem_20793038_SanhuezaVega implements cbSystemInterface_2079303
             }
         }
         return false;
-    }
-
-    public chatbot_20793038_SanhuezaVega getChatbotByID(int id){
-        chatbot_20793038_SanhuezaVega selectedChatbot;
-        int selectedChatbotID;
-        ArrayList<chatbot_20793038_SanhuezaVega> chatbotList = this.chatbotList;
-
-        for(int i = 0; i < chatbotList.size(); i++){
-            selectedChatbot = chatbotList.get(i);
-            selectedChatbotID = selectedChatbot.getId();
-
-            if(id == selectedChatbotID){
-                return selectedChatbot;
-            }
-        }
-        return null;
     }
 
     @Override
